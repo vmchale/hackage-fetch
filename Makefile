@@ -2,7 +2,7 @@
 .DEFAULT_GOAL := fetch
 
 names:
-	duma https://hackage.haskell.org/packages/names
+	wget https://hackage.haskell.org/packages/names
 
 all.txt: names
 	rg '<a href="/package/.*?">.*?</a>' names -o | rg '>.*?<' -o > all.txt
