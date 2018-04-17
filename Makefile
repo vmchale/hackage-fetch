@@ -1,5 +1,8 @@
-.PHONY: fetch clean
+.PHONY: fetch clean count
 .DEFAULT_GOAL := fetch
+
+count:
+	fd '\.tar\.gz$$' ~/.cabal/packages/hackage.haskell.org/ | wc -l
 
 names:
 	wget https://hackage.haskell.org/packages/names
