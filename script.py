@@ -1,17 +1,5 @@
-import subprocess
 import os
 import shutil
-
-# read lines
-with open('all.txt') as f:
-    content = f.readlines()
-
-# strip whitespace
-content = [x.strip()[1:-1] for x in content] 
-
-# execute command for each line
-for line in content:
-    subprocess.run(["cabal", "unpack", "-d", "hackage", line])
 
 hackage_names = [ dirs for path, dirs, _ in os.walk("hackage") ][0]
 
