@@ -7,7 +7,14 @@ strip :: String -> String
 strip = init . tail
 
 content :: IO [String]
-content = fmap strip . words <$> readFile "all.txt"
+content = filter (not . bad) . fmap strip . words <$> readFile "all.txt"
+
+bad :: String -> Bool
+bad "HLogger"            = True
+bad "BirdPP"             = True
+bad "bindings-gts"       = True
+bad "WebBits-multiplate" = True
+bad _                    = False
 
 unpack :: [String] -> IO ()
 unpack = parallel_ . fmap g
