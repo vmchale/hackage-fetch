@@ -11,14 +11,11 @@ all.txt: names
 	rg '<a href="/package/.*?">.*?</a>' names -o | rg '>.*?<' -o > all.txt
 
 clean:
-	rm -rf hackage all.txt names tags *.o *.hi script
+	rm -rf hackage all.txt names tags *.o *.hi dist-newstyle dist
 
-script: script.hs
-	ghc -O2 script.hs -threaded -rtsopts -with-rtsopts=-N -Wall
-
-fetch: all.txt script
+fetch: all.txt script.hs
 	rm -rf hackage
-	./script
+	./script.hs
 
 project: fetch
 	python3 script.py

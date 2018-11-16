@@ -1,3 +1,8 @@
+#!/usr/bin/env cabal
+{- cabal:
+build-depends: base, parallel-io, process
+-}
+
 module Main (main) where
 
 import           Control.Concurrent.ParallelIO.Global
@@ -14,6 +19,7 @@ bad "HLogger"            = True
 bad "BirdPP"             = True
 bad "bindings-gts"       = True
 bad "WebBits-multiplate" = True
+bad "hermes"             = True
 bad _                    = False
 
 unpack :: [String] -> IO ()
